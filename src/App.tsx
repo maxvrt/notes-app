@@ -3,7 +3,6 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useMemo } from 'react'
 import { Container } from 'react-bootstrap'
-import "bootstrap/dist/css/bootstrap.min.css"
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { NewNote } from "./NewNote";
 import { EditNote } from "./EditNote";
