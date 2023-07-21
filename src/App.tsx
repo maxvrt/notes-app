@@ -57,6 +57,17 @@ function App() {
     function addTag(tag: Tag) {
         setTags(prev => [...prev, tag])
     }
+    function updateTag(tag: Tag, label: string) {
+        setTags(()=>tags.map((item)=>{
+            if (tag === item) {
+                return {...item, ...tag, label: label}
+            }
+            return item
+        }))
+    }
+    function delTag(tag: Tag) {
+        setTags(prev => prev.filter((item)=>{return item !== tag}))
+    }
     //NoteData: title, markdown, tags. Выделяем tags
     function onCreateNote({tags, ...data}:NoteData) {
         setNotes(prevNotes => {
@@ -98,7 +109,7 @@ function App() {
       <Container className='my-4'>
           <Routes>
             <Route path='/' element={
-                <NoteList availableTags={tags} notes={notesWithTags}/>
+                <NoteList availableTags={tags} notes={notesWithTags} onUpdateTag={updateTag} onDeleteTag={delTag}/>
             } />
             <Route path='/new' element={
                 <NewNote
